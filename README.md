@@ -1,2 +1,2 @@
 # Learn-Bash
-This contains all my learning related to Bash.
+This contains all my learnings related to Bash.
