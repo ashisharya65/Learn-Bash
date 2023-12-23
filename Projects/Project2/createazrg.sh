@@ -5,10 +5,7 @@
     Make sure you have Azure CLI already installed on your machine.
     
 '
-#!/bin/bash
-
-# az login --use-device-code
-
+az login --use-device-code
 rgname="azcli-rg"
 loc="westus"
 read -p "Do you have more than one Azure subscription - (y/n): " answer
