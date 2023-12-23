@@ -1,6 +1,13 @@
 #!/bin/bash
 
-az login --use-device-code
+: '
+    This is a bash script using which you will be able to create an Azure resource group using Azure CLI.
+    Make sure you have Azure CLI already installed on your machine.
+    
+'
+#!/bin/bash
+
+# az login --use-device-code
 
 rgname="azcli-rg"
 loc="westus"
@@ -13,20 +20,20 @@ if [ $answer == "y" ];then
     
     # Getting all the subscription names
     allazsubs= az account list --query '[*].name' --output tsv
-    count=0
     for sub in $allazsubs;
     do 
-        count++
         echo "$sub"
     done
     echo ""
 
-    read -p "Enter your subscription: " subname
+    read -p "Enter your subscription name: " subname
     az account set --name $subname
 elif [ $answer == "n" ];then
-    echo "Ok.."
+    echo -e "Ok. Exiting the script...\n"
+    exit
 else
-    echo "Enter yes or no to proceed with the script."
+    echo -e "Enter yes or no to proceed or exit the script.\n"
+    exit
 fi
 
 # Checking if the concerned resource group is created or not. If not then then create it.
@@ -36,4 +43,3 @@ else
     az group create --name $rgname --location $loc >/dev/null
     echo "The resource group $rgname created successfully."
 fi
-
