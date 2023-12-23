@@ -5,7 +5,7 @@
     Make sure you have Azure CLI already installed on your machine.
     
 '
-az login --use-device-code
+
 rgname="azcli-rg"
 loc="westus"
 read -p "Do you have more than one Azure subscription - (y/n): " answer
@@ -35,8 +35,8 @@ fi
 
 # Checking if the concerned resource group is created or not. If not then then create it.
 if [ $(az group exists -n $rgname) ]; then
-    echo "The resource group $rgname already exists."
+    echo -e "The resource group $rgname already exists.\n"
 else
     az group create --name $rgname --location $loc >/dev/null
-    echo "The resource group $rgname created successfully."
+    echo -e "The resource group $rgname created successfully.\n"
 fi
